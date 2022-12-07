@@ -6,7 +6,7 @@ function Navbar() {
   const navigate = useNavigate()
   return (
     <Box sx={{flexGrow: 1}}>
-      <AppBar position='static' color='secondary'>
+      <AppBar position='static' style={{backgroundColor: '#bb2649'}}>
         <Container>
           <Toolbar>
             <Typography sx={{flexGrow: 1}}>
