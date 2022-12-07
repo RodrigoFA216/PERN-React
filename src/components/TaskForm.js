@@ -6,7 +6,7 @@ import {useNavigate} from 'react-router-dom'
 function TaskForm() {
     const [task, setTask] = useState({
         title: '',
-        description: '',
+        descripcion: '',
     })
 
     const [loading, setLoading] = useState(false)
@@ -81,7 +81,7 @@ function TaskForm() {
                             variant='contained' 
                             color='primary' 
                             type='submit' 
-                            disabled={!task.title||!task.description}>
+                            disabled={!task.title || !task.descripcion}>
                                 {loading ? <CircularProgress
                                     color='inherit'
                                     size={24}
