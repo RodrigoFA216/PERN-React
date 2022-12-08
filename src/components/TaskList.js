@@ -1,15 +1,17 @@
 import React from 'react'
 import {useEffect, useState} from 'react'
 import {Button, Card, CardContent, Typography} from '@mui/material'
+import {useNavigate} from 'react-router-dom'
 
 function TaskList() {
     const [tasks, setTasks] = useState([]);
+    const navigate = useNavigate();
 
     const loadTasks= async()=>{
         try {
             const response=await fetch('http://localhost:4000/readelements');
             const data= await response.json();
-            setTasks(data)
+            setTasks(data);
             // console.log(data);
         } catch (error) {
             console.log(error);
@@ -17,19 +19,18 @@ function TaskList() {
     }
 
     const handleDelete = async (id)=>{
-        try {
-            /*const res =*/ await fetch(`http://localhost:4000/deleteelement/${id}`, {
+        try { 
+            await fetch(`http://localhost:4000/deleteelement/${id}`, {
                 method: 'DELETE'
             });
-            // console.log(res);
-            setTasks(tasks.filter((task)=>task.id !== id))
+            setTasks(tasks.filter((task)=>task.id !== id));
         } catch (error) {
             console.log(error);
         }
     }
 
     useEffect(()=>{
-        loadTasks()
+        loadTasks();
     }, [])
     
     return (
@@ -62,7 +63,7 @@ function TaskList() {
                                 <Button 
                                 variant='outlined' 
                                 color='inherit' 
-                                onClick={()=>console.log('edit')}>
+                                onClick={()=>navigate(`/tasks/${task.id}/edit`)}>
                                     Editar
                                 </Button>
                                 <Button 
