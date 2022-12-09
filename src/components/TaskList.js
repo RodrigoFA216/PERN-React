@@ -35,15 +35,15 @@ function TaskList() {
     
     return (
         <>
-            <h1>
+            <h3>
                 TaskList
-            </h1>
+            </h3>
             {
                 tasks.map(task=>(
                     <Card style={{
                         marginBottom: '.9rem',
-                        backgroundColor: '#10556e',
-                        color: '#ffffff'
+                        backgroundColor: '#8269ff',
+                        color: '#white'
                     }}
                     key={task.id}
                     >
@@ -52,25 +52,29 @@ function TaskList() {
                             justifyContent: "space-between"
                         }}>
                             <div>
-                                <Typography>
-                                    {task.title}
+                                <Typography style={{color:'white'}}>
+                                    <h3>
+                                        {task.title}
+                                    </h3>
                                 </Typography>
-                                <Typography>
-                                    {task.descripcion}
+                                <Typography style={{color:'white'}}>
+                                    <h4>
+                                        {task.descripcion}
+                                    </h4>
                                 </Typography>
                             </div>
                             <div>
                                 <Button 
-                                variant='outlined' 
+                                variant='contained' 
                                 color='inherit' 
                                 onClick={()=>navigate(`/tasks/${task.id}/edit`)}>
                                     Editar
                                 </Button>
                                 <Button 
-                                variant='outlined' 
-                                color='warning' 
+                                variant='contained' 
+                                color='secondary' 
                                 onClick={()=>handleDelete(task.id)}
-                                style={{marginLeft:'.6rem'}}
+                                style={{margin:'.6rem'}}
                                 >
                                     Eliminar
                                 </Button>
